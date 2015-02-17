@@ -1,3 +1,5 @@
+#include <SPI.h>
+
 #include <SD.h>
 #include <Adafruit_NeoPixel.h>
 #define PIN 8
@@ -61,10 +63,9 @@ void play(){
             delay(pause);
           }
         }
-        strip.show();
-        //delay(pause);
         // close the file:
         myFile.close();
+        powerOff();
         } 
         else {
   	    // if the file didn't open, print an error:
@@ -78,4 +79,5 @@ void powerOff(){
   for(int i=0; i<144; i++){
     strip.setPixelColor(i,0,0,0);
   }
+  strip.show();
 }
